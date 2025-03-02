@@ -1,0 +1,52 @@
+<div nz-row>
+   
+    <div nz-col nzSpan="10">
+        <!-- <div class="login-container"> -->
+        <!-- <div class="login-box"> -->
+            <div class="sample">
+                <!-- <h1 class="title1">Welcome to J2Dtech Please Login</h1> -->
+                    </div>
+        <div class="login-header">
+            <div class="login-header1"><span class="title">J2Dtech</span></div>
+            <span class="welcome">Welcome Back!</span>
+            <div class="login-header2">Log in with your email</div>
+        </div>
+        <div class="login-container">
+            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Please input your username!">
+                        <nz-input-group nzPrefixIcon="user">
+                            <input type="text" nz-input formControlName="email" placeholder="email" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control nzErrorTip="Please input your Password!">
+                        <nz-input-group nzPrefixIcon="lock">
+                            <input type="password" nz-input formControlName="password" placeholder="Password" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <div nz-row class="login-form-margin">
+                    <div nz-col [nzSpan]="12">
+                        <label nz-checkbox formControlName="remember">
+                            <span>Remember me</span>
+                        </label>
+                    </div>
+                    <div nz-col [nzSpan]="12">
+                        <a class="login-form-forgot" (click) = forgotPassword()>Forgot password</a>
+                    </div>
+                </div>
+                <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'" (click) = "login()">Log in</button>
+                <a routerLink="/userRegister" class="message"> Dont have an account? <span
+                        class="signup-text">Signup</span> </a>
+            </form>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
+    </div>
+    <div nz-col nzSpan="14" class="image-container">
+        <img src="/images/login8.jpg" alt="Image">
+        <!-- <div class="overlay-text">Your Text Here</div> -->
+    </div>
+</div>

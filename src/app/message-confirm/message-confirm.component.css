@@ -1,0 +1,66 @@
+/* Modal Container */
+.modal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it appears above other elements */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #ffffff; /* White background */
+    padding: 30px; /* Padding inside the modal */
+    border-radius: 10px; /* Rounded corners */
+    width: 320px; /* Modal width */
+    text-align: center; /* Center text alignment */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  }
+  
+  /* Success Icon */
+  .modal-icon {
+    font-size: 60px;
+    margin-bottom: -20px; /* Space below icon */
+  }
+  .success-icon {
+    color: #4caf50; /* Green color matching the design */
+    font-size: 60px;
+    height: 50%;
+    width: 50%;
+    /* margin-bottom: 10px; */
+  }
+  
+  /* Modal Title */
+  .modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4caf50; /* Green title */
+    margin-bottom: 10px; /* Space below title */
+  }
+  
+  /* Modal Message */
+  .modal-message {
+    font-size: 14px;
+    color: #333333; /* Dark gray text */
+    margin-bottom: 20px; /* Space below the message */
+  }
+  
+  /* Continue Button */
+  .modal-button {
+    background-color: #4caf50; /* Green button background */
+    color: #ffffff; /* White text */
+    padding: 10px 20px; /* Button padding */
+    border-radius: 5px; /* Rounded button */
+    text-transform: none; /* Disable uppercase text */
+    font-size: 14px; /* Button text size */
+  }
+  .modal-button:hover {
+    background-color: #43a047; 
+  }
+
+  

@@ -1,0 +1,89 @@
+/* reviews.component.css */
+.reviews-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .reviews-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .reviews-list {
+    margin-bottom: 30px;
+  }
+  
+  .review-item {
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  
+  .review-user {
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .review-date {
+    font-size: 12px;
+    color: #888;
+    margin-left: 10px;
+  }
+  
+  .review-rating {
+    margin-top: 10px;
+  }
+  
+  .stars {
+    color: gold;
+  }
+  
+  .review-comment {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  
+  .review-form {
+    margin-top: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    font-size: 14px;
+    display: block;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #0056b3;
+  }
+  

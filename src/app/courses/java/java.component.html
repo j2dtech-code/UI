@@ -1,0 +1,98 @@
+<app-home></app-home>
+<div class="course-container">
+    <section class="course-header">
+      <div class="course-title">
+        <h1>Java Programming Course</h1>
+        <p>Unlock your potential and become a proficient Java Developer</p>
+        <button class="enroll-btn">Enroll Now</button>
+      </div>
+    </section>
+  
+    <section class="course-summary">
+      <div class="benefits">
+        <h2>Why Learn Java?</h2>
+        <ul class="benefit-list">
+          <li><span class="checkmark"></span> High demand in the job market with lucrative salaries</li>
+          <li><span class="checkmark"></span> Cross-platform compatibility (Write Once, Run Anywhere)</li>
+          <li><span class="checkmark"></span> Object-Oriented Programming for scalable solutions</li>
+          <li><span class="checkmark"></span> Extensive use in web, mobile, and enterprise applications</li>
+          <li><span class="checkmark"></span> Strong developer community and vast ecosystem</li>
+        </ul>
+      </div>
+    </section>
+  
+    <section class="course-overview">
+      <h2>Course Overview</h2>
+      <p>This course is designed to take you from beginner to expert in Java programming. You will gain practical knowledge through hands-on projects, ensuring that you are job-ready upon completion.</p>
+    </section>
+  
+    <section class="course-modules">
+      <h2>What You’ll Learn</h2>
+      <div class="module" *ngFor="let module of modules">
+        <h3>{{ module.name }}</h3>
+        <ul>
+          <li *ngFor="let item of module.content">{{ item }}</li>
+        </ul>
+      </div>
+    </section>
+  
+    <section class="course-features">
+      <h2>Key Features of This Course</h2>
+      <div class="features">
+        <div class="feature-card">
+          <h4>Beginner to Advanced Level</h4>
+          <p>Master core Java concepts and advanced topics.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Practical Approach</h4>
+          <p>Work on real-world projects and coding challenges.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Comprehensive Curriculum</h4>
+          <p>Covers everything from syntax to web development.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Expert Instructors</h4>
+          <p>Learn from seasoned Java professionals.</p>
+        </div>
+        <div class="feature-card">
+          <h4>Certification</h4>
+          <p>Get certified upon completion, recognized globally.</p>
+        </div>
+      </div>
+    </section>
+  
+    <section class="career-opportunities">
+      <h2>Career Opportunities</h2>
+      <ul>
+        <li>Java Developer</li>
+        <li>Software Engineer</li>
+        <li>Back-End Developer</li>
+        <li>Full-Stack Developer</li>
+        <li>Android Developer (Java-based)</li>
+      </ul>
+    </section>
+  
+    <section class="salary-info">
+      <h2>Average Salary for Java Developers</h2>
+      <div class="salary-range">
+        <div class="salary-card">
+          <h4>Entry-Level</h4>
+          <p>$50,000 – $75,000 per year</p>
+        </div>
+        <div class="salary-card">
+          <h4>Mid-Level</h4>
+          <p>$80,000 – $120,000 per year</p>
+        </div>
+        <div class="salary-card">
+          <h4>Senior-Level</h4>
+          <p>$130,000+ per year</p>
+        </div>
+      </div>
+    </section>
+  
+    <footer class="enroll-section">
+      <button class="enroll-btn">Enroll Now</button>
+    </footer>
+  </div>
+  

@@ -1,0 +1,39 @@
+<!-- reviews.component.html -->
+<div class="reviews-container">
+    <h2 class="reviews-title">Customer Reviews</h2>
+  
+    <!-- Display Reviews -->
+    <div class="reviews-list">
+      <div *ngFor="let review of reviews" class="review-item">
+        <div class="review-user">
+          <strong>{{ review.user }}</strong>
+          <span class="review-date">{{ review.date | date:'mediumDate' }}</span>
+        </div>
+        <div class="review-rating">
+          <span class="stars">{{ '★'.repeat(review.rating) }}</span>
+        </div>
+        <p class="review-comment">{{ review.comment }}</p>
+      </div>
+    </div>
+  
+    <!-- Add New Review Form -->
+    <div class="review-form">
+      <h3>Leave a Review</h3>
+      <form (ngSubmit)="addReview()">
+        <div class="form-group">
+          <label for="user">Your Name:</label>
+          <input id="user" [(ngModel)]="newReview.user" name="user" required />
+        </div>
+        <div class="form-group">
+          <label for="rating">Rating (1-5):</label>
+          <input id="rating" type="number" [(ngModel)]="newReview.rating" name="rating" min="1" max="5" required />
+        </div>
+        <div class="form-group">
+          <label for="comment">Comment:</label>
+          <textarea id="comment" [(ngModel)]="newReview.comment" name="comment" required></textarea>
+        </div>
+        <button type="submit" [disabled]="!newReview.user || !newReview.rating || !newReview.comment">Submit Review</button>
+      </form>
+    </div>
+  </div>
+  

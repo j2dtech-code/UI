@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e0f7fa;
+}
+
+.success-box {
+  text-align: center;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  padding: 20px;
+}
+
+.success-icon {
+  font-size: 50px;
+  color: #4caf50; 
+  margin-bottom: 10px;
+}
+
+.success-title {
+  color: #4caf50;
+  font-size: 24px;
+  margin: 0;
+}
+
+.success-message {
+  color: #6c757d;
+  font-size: 16px;
+  margin: 10px 0 20px 0;
+}
+
+.continue-button {
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.continue-button:hover {
+  background-color: #43a047; 
+}
+
+.material-icons {
+    font-size: 60px;
+}

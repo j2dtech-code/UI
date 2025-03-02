@@ -1,0 +1,80 @@
+[nz-card-grid] {
+    width: 25%;
+    text-align: center;
+    height: 400px;
+    margin-right: 50px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-top: 50px;
+  }
+
+  .review-card {
+    width: 400px;
+    margin: 20px auto;
+    padding: 30px 20px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .review-avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: -60px; /* Pull avatar into the card */
+  }
+  
+  .review-avatar {
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    width: 100px !important; /* Set desired width */
+  height: 100px !important;
+  }
+  
+  .review-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  
+  .review-text {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 15px 0;
+  }
+
+  .review-header {
+    height: 350px;
+    background-color: #073f7b;
+  }
+
+  .review-title {
+    color: white;
+    font-size: 40px;
+    margin-top: 25px;
+    margin-left: 25px;
+  }
+
+  [nz-typography] {
+    margin-top: 25px;
+    margin-left: 25px;
+    color: white;
+    font-size: 16px;
+  }
+
+  
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* or contain, depending on your needs */
+  }
+  
+  /* ::ng-deep .ant-card-body {
+    padding: 20px;
+    background-color: #d9d9d9;
+    border-radius: 16px; 
+  } */
+  
+  

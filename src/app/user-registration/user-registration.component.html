@@ -1,0 +1,57 @@
+<div class="login-container">
+  <div class="login-box">
+    <div>
+      <h1 class="header">Register</h1>
+    </div>
+    <form nz-form [formGroup]="validateForm" class="login-form">
+      <h4>Email</h4>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input a valid email!">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="email" placeholder="email" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <h4>Phone Number</h4>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input a valid phone number!">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="phoneNumber" placeholder="phone number" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <h4>User Name</h4>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your username (min 4 characters)!">
+          <nz-input-group>
+            <input type="text" nz-input formControlName="userName" placeholder="username" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+
+      <h4>Password</h4>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Please input your password (min 6 characters)!">
+          <nz-input-group>
+            <input type="password" nz-input formControlName="password" placeholder="password" />
+          </nz-input-group>
+        </nz-form-control>
+      </nz-form-item>
+      <h4>Confirm Password</h4>
+      <nz-form-item>
+        <nz-form-control [nzErrorTip]="
+  validateForm.get('confirmPassword')?.errors?.['notMatching'] ? 'Passwords do not match!' : 'Please confirm your password!'
+">
+          <nz-input-group>
+            <input type="password" nz-input formControlName="confirmPassword" placeholder="confirm password" />
+          </nz-input-group>
+        </nz-form-control>
+
+      </nz-form-item>
+
+    </form>
+    <button nz-button nzType="primary" nzBlock class="submit" (click)="confirm()">Submit</button>
+  </div>
+</div>
