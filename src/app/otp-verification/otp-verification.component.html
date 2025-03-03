@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="otp-container">
+      <h2>Verify Your OTP</h2>
+      <p class="instruction">Enter the 6-digit OTP sent to your email or phone.</p>
+  
+      <form (ngSubmit)="onSubmit()">
+        
+        <!-- OTP Input -->
+        <div class="otp-group">
+          <input #otpInputs type="text" maxlength="1" pattern="[0-9]*" (input)="moveToNext($event, 0)" (keydown)="moveToPrev($event, 0)" [(ngModel)]="otp[0]" name="otp1">
+          <input #otpInputs type="text" maxlength="1" pattern="[0-9]*" (input)="moveToNext($event, 1)" (keydown)="moveToPrev($event, 1)" [(ngModel)]="otp[1]" name="otp2">
+          <input #otpInputs type="text" maxlength="1" pattern="[0-9]*" (input)="moveToNext($event, 2)" (keydown)="moveToPrev($event, 2)" [(ngModel)]="otp[2]" name="otp3">
+          <input #otpInputs type="text" maxlength="1" pattern="[0-9]*" (input)="moveToNext($event, 3)" (keydown)="moveToPrev($event, 3)" [(ngModel)]="otp[3]" name="otp4">
+          <input #otpInputs type="text" maxlength="1" pattern="[0-9]*" (input)="moveToNext($event, 4)" (keydown)="moveToPrev($event, 4)" [(ngModel)]="otp[4]" name="otp5">
+          <input #otpInputs type="text" maxlength="1" pattern="[0-9]*" (input)="moveToNext($event, 5)" (keydown)="moveToPrev($event, 5)" [(ngModel)]="otp[5]" name="otp6">
+        </div>
+  
+        <span *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </span>
+  
+        <!-- Submit Button -->
+        <button type="submit">Verify OTP</button>
+      </form>
+  
+      <p *ngIf="successMessage" class="success">
+        {{ successMessage }}
+      </p>
+  
+      <p class="resend-otp">
+        Didn't receive the OTP? <a href="#" (click)="resendOtp()">Resend OTP</a>
+      </p>
+    </div>
+  </div>
+  

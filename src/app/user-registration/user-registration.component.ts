@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,AbstractControl,ValidationErrors } from '@angular/forms';
 import { MainServiceService } from '../services/main-service.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { MessageConfirmComponent } from '../message-confirm/message-confirm.component';
 
 @Component({
   selector: 'app-user-registration',
@@ -11,61 +13,78 @@ import { Router } from '@angular/router';
   styleUrl: './user-registration.component.css'
 })
 export class UserRegistrationComponent {
-  validateForm!: FormGroup;
-  isPopupVisible = false;
-  
-  constructor(private fb: FormBuilder,private service: MainServiceService,private router: Router) {
+  signupForm: FormGroup;
+  submitted = false;
+  successMessage = '';
 
-  }
-
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      email: [null, [Validators.required, Validators.email]],
-      phoneNumber: [null, [Validators.required, Validators.pattern('^[0-9]{10,15}$')]],
-      userName: [null, [Validators.required, Validators.minLength(4)]],
-      password: [null, [Validators.required, Validators.minLength(6)]],
-      confirmPassword: [null, [Validators.required]]
+  constructor(private fb: FormBuilder, private signupService: MainServiceService,private router: Router,private dialog: MatDialog) {
+    this.signupForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
     }, { validators: this.passwordMatchValidator });
   }
 
-  // Custom validator that sets an error on confirmPassword if the passwords do not match.
-  passwordMatchValidator(group: AbstractControl): ValidationErrors | null {
-    const passwordControl = group.get('password');
-    const confirmPasswordControl = group.get('confirmPassword');
-    if (passwordControl && confirmPasswordControl) {
-      // If confirmPassword already has errors from other validators, leave them.
-      if (confirmPasswordControl.errors && !confirmPasswordControl.errors['notMatching']) {
-        return null;
-      }
-      if (passwordControl.value !== confirmPasswordControl.value) {
-        confirmPasswordControl.setErrors({ notMatching: true });
-      } else {
-        // Remove the notMatching error. (Make sure not to clear other errors if they exist.)
-        confirmPasswordControl.setErrors(null);
-      }
-    }
-    return null;
+  // Ensure passwords match
+  passwordMatchValidator(form: FormGroup) {
+    return form.get('password')?.value === form.get('confirmPassword')?.value
+      ? null
+      : { ['mismatch']: true }; // Use bracket notation to avoid TypeScript errors
   }
 
-  confirm(): void {
-    // Mark all fields as dirty to trigger validation messages.
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
+  // Get form controls safely
+  get f(): { [key: string]: any } {
+    return this.signupForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.signupForm.invalid) {
+      return;
     }
 
-    if (this.validateForm.valid) {
-      const registrationData = { 
-        email: this.validateForm.value.email,
-        phoneNumber: this.validateForm.value.phoneNumber,
-        userName: this.validateForm.value.userName,
-        password: this.validateForm.value.password  // Typically you don't pass confirmPassword to the API
-      };
-      console.log('Registration successful!', this.validateForm.value);
-      this.service.registerUser(registrationData);
-      // Proceed with your registration logic (e.g., call a service).
-    } else {
-      console.log('Please fill in all fields correctly.');
-    }
+    this.signupService.registerUser(this.signupForm.value).subscribe(
+      (response: any) => {
+        console.log(response);
+        if (response.code === 200) {
+          this.successMessage = 'Signup successful!';
+          this.openSuccessModal();
+        } else if(response.code === 501){
+          this.successMessage = 'User Already Exists Please Different Email!';
+          this.openFailureModal();
+        }
+        
+      },
+      (error: any) => {
+        console.error('Error:', error);
+      }
+    );
+    
   }
+
+  openFailureModal(): void {
+    const dialogRef = this.dialog.open(MessageConfirmComponent, {
+          width: '400px',
+          disableClose: true,
+          data: {message: this.successMessage}
+        });
+      }
+
+  
+
+  openSuccessModal(): void {
+    const dialogRef = this.dialog.open(MessageConfirmComponent, {
+          width: '400px',
+          disableClose: true,
+          data: {message: this.successMessage}
+        });
+    
+        dialogRef.afterClosed().subscribe(() => {
+          this.router.navigate(['/login']
+          );
+        });
+      }
 }

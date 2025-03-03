@@ -1,57 +1,63 @@
-<div class="login-container">
-  <div class="login-box">
-    <div>
-      <h1 class="header">Register</h1>
-    </div>
-    <form nz-form [formGroup]="validateForm" class="login-form">
-      <h4>Email</h4>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input a valid email!">
-          <nz-input-group>
-            <input type="text" nz-input formControlName="email" placeholder="email" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
+<div class="container">
+  <div class="signup-container">
+    <h2>Create an Account</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      
+      <!-- Email -->
+      <div class="input-group">
+        <input type="email" formControlName="email" required>
+        <label>Email</label>
+        <span *ngIf="submitted && f['email'].errors" class="error">
+          <span *ngIf="f['email'].errors?.['required']">Email is required.</span>
+          <span *ngIf="f['email'].errors?.['email']">Invalid email format.</span>
+        </span>
+      </div>
 
-      <h4>Phone Number</h4>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input a valid phone number!">
-          <nz-input-group>
-            <input type="text" nz-input formControlName="phoneNumber" placeholder="phone number" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
+      <!-- Phone Number -->
+      <div class="input-group">
+        <input type="text" formControlName="phoneNumber" required>
+        <label>Phone Number</label>
+        <span *ngIf="submitted && f['phoneNumber'].errors" class="error">
+          <span *ngIf="f['phoneNumber'].errors?.['required']">Phone number is required.</span>
+          <span *ngIf="f['phoneNumber'].errors?.['pattern']">Invalid phone number.</span>
+        </span>
+      </div>
 
-      <h4>User Name</h4>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your username (min 4 characters)!">
-          <nz-input-group>
-            <input type="text" nz-input formControlName="userName" placeholder="username" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
+      <!-- name -->
+      <div class="input-group">
+        <input type="text" formControlName="name" required>
+        <label>UserName</label>
+        <span *ngIf="submitted && f['name'].errors" class="error">
+          <span *ngIf="f['name'].errors?.['required']">name is required.</span>
+          <span *ngIf="f['name'].errors?.['minlength']">Must be at least 3 characters.</span>
+        </span>
+      </div>
 
-      <h4>Password</h4>
-      <nz-form-item>
-        <nz-form-control nzErrorTip="Please input your password (min 6 characters)!">
-          <nz-input-group>
-            <input type="password" nz-input formControlName="password" placeholder="password" />
-          </nz-input-group>
-        </nz-form-control>
-      </nz-form-item>
-      <h4>Confirm Password</h4>
-      <nz-form-item>
-        <nz-form-control [nzErrorTip]="
-  validateForm.get('confirmPassword')?.errors?.['notMatching'] ? 'Passwords do not match!' : 'Please confirm your password!'
-">
-          <nz-input-group>
-            <input type="password" nz-input formControlName="confirmPassword" placeholder="confirm password" />
-          </nz-input-group>
-        </nz-form-control>
+      <!-- Password -->
+      <div class="input-group">
+        <input type="password" formControlName="password" required>
+        <label>Password</label>
+        <span *ngIf="submitted && f['password'].errors" class="error">
+          <span *ngIf="f['password'].errors?.['required']">Password is required.</span>
+          <span *ngIf="f['password'].errors?.['minlength']">Must be at least 6 characters.</span>
+        </span>
+      </div>
 
-      </nz-form-item>
+      <!-- Confirm Password -->
+      <div class="input-group">
+        <input type="password" formControlName="confirmPassword" required>
+        <label>Confirm Password</label>
+        <span *ngIf="submitted && signupForm.errors?.['mismatch']" class="error">
+          Passwords do not match.
+        </span>
+      </div>
 
+      <!-- Submit Button -->
+      <button type="submit">Sign Up</button>
     </form>
-    <button nz-button nzType="primary" nzBlock class="submit" (click)="confirm()">Submit</button>
+
+    <!-- <p *ngIf="successMessage" class="success">
+      {{ successMessage }}
+    </p> -->
   </div>
 </div>

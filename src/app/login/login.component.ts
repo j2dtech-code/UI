@@ -12,50 +12,64 @@ import { MainServiceService } from '../services/main-service.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  validateForm!: FormGroup;
-  isForgotPassword: boolean = false;
-  isOtp: boolean = false;
+  loginForm: FormGroup;
+  submitted = false;
+  successMessage = '';
 
-  submitForm(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
-    }
-  }
-
-  constructor(private fb: FormBuilder,private router: Router,private service: MainServiceService) {}
-
-
-  ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      email: [null, [Validators.required]],
-      password: [null, [Validators.required]],
-      remember: [true],
+  constructor(private fb: FormBuilder,private router: Router,private service: MainServiceService) {
+    this.loginForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
-
-    this.validateForm.valueChanges
-      .pipe(debounceTime(500))
-      .subscribe((...args) => console.log(...args));
   }
+
+  // Get form controls
+  get f(): { [key: string]: any } {
+    return this.loginForm.controls;
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+    // Simulate login success
+    this.successMessage = 'Login successful!';
+    console.log(this.loginForm.value);
+      const email = this.loginForm.get('email')?.value;
+    const password = this.loginForm.get('password')?.value;
+    this.service.login(email, password).subscribe(
+      (res) => {
+        if(res.code == 200) {
+          this.router.navigate(['/home']);
+        } else {
+          this.successMessage = 'UserName or Password Incorrect'
+        }
+      }
+    );
+  }
+
 
   forgotPassword() {
     this.router.navigate(['/forgotPassword']);
   }
 
   generateOtp() {
-   this.isOtp = true;
+  //  this.isOtp = true;
   }
 
-  login() {
-    const email = this.validateForm.get('email')?.value;
-    const password = this.validateForm.get('password')?.value;
-    this.service.login(email, password).subscribe(
-      (res) => {
-        if(res.code == '200') {
-          this.router.navigate(['/home']);
-        }
-      }
-    );
-  }
+  // login() {
+  //   const email = this.validateForm.get('email')?.value;
+  //   const password = this.validateForm.get('password')?.value;
+  //   this.service.login(email, password).subscribe(
+  //     (res) => {
+  //       if(res.code == '200') {
+  //         this.router.navigate(['/home']);
+  //       }
+  //     }
+  //   );
+  // }
   
 }
