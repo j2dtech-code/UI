@@ -49,6 +49,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDividerModule} from '@angular/material/divider';
 import { AddReviewComponent } from './add-review/add-review.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { SlickCarouselModule } from 'ngx-slick-carousel';
     JavaComponent,
     ADFComponent,
     DataScienceComponent,
-    AddReviewComponent
+    AddReviewComponent,
+    OtpVerificationComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

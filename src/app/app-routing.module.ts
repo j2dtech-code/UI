@@ -13,6 +13,8 @@ import { TestComponent } from './test/test.component';
 import { ADFComponent } from './courses/adf/adf.component';
 import { DataScienceComponent } from './courses/data-science/data-science.component';
 import { JavaComponent } from './courses/java/java.component';
+import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'dataScience', component: DataScienceComponent },
   { path: 'java', component: JavaComponent },
   { path: 'test', component: TestComponent },
+  { path: 'otp', component: OtpVerificationComponent },
+  { path: 'resetPassword', component: ResetPasswordComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

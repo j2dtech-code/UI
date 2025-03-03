@@ -8,10 +8,10 @@ import { Observable } from 'rxjs';
 export class MainServiceService {
 
   constructor(private http: HttpClient) { }
-   apiUrl = 'http://localhost:8080/j2Dtech/';
+   apiUrl = 'http://localhost:8080/j2Dtech';
 
    registerUser(formData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}registerUser`, formData);
+    return this.http.post(`${this.apiUrl}/registerUser`, formData);
   }
 
   login(email: string, password: number): Observable<any> {
@@ -19,14 +19,20 @@ export class MainServiceService {
       .set('email', email)
       .set('password', password);
 
-    return this.http.get(`${this.apiUrl}login`, { params });
+    return this.http.get(`${this.apiUrl}/login`, { params });
   }
 
   sendEmail(email: string): Observable<any> {
     const params = new HttpParams()
       .set('email', email);
-    return this.http.get(`${this.apiUrl}send-email`, { params });
+    return this.http.get(`${this.apiUrl}/send-email`, { params });
   }
 
-  
+  updatePassword(email: string, password: number): Observable<any> {
+    const params = new HttpParams()
+      .set('email', email)
+      .set('password', password);
+
+    return this.http.get(`${this.apiUrl}/updatePassword`, { params });
+  }
 }
