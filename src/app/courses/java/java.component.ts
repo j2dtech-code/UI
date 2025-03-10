@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { TestComponent } from '../../test/test.component';
+import { PopUpComponent } from '../../pop-up/pop-up.component';
 
 @Component({
   selector: 'app-java',
@@ -8,6 +11,8 @@ import { Component } from '@angular/core';
   styleUrl: './java.component.css'
 })
 export class JavaComponent {
+
+  constructor(private dialog: MatDialog) {}
   modules = [
     {
       name: 'Module 1: Java Fundamentals',
@@ -70,4 +75,27 @@ export class JavaComponent {
       ]
     }
   ];
+
+  expandedModule: number | null = null;
+
+  toggleModule(index: number): void {
+    this.expandedModule = this.expandedModule === index ? null : index;
+  }
+
+  enroll() {
+    this.openPopup();
+  }
+
+  openPopup() {
+    const dialogRef = this.dialog.open(PopUpComponent, {
+      width: '400px',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('User Data:', result);
+      }
+    });
+  }
 }

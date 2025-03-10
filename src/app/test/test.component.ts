@@ -1,6 +1,9 @@
-import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MainServiceService } from '../services/main-service.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 
 @Component({
@@ -11,37 +14,20 @@ import { MainServiceService } from '../services/main-service.service';
   styleUrl: './test.component.css'
 })
 export class TestComponent{
-  resetPasswordForm: FormGroup;
-  submitted = false;
-  successMessage = '';
+  validateForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
-    this.resetPasswordForm = this.fb.group({
-      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{6,}$')]],
-      confirmPassword: ['', Validators.required]
-    }, { validator: this.passwordMatchValidator });
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit(): void {
+    this.validateForm = this.fb.group({
+      name: [null, [Validators.required]],
+      password: [null, [Validators.required]],
+      email: [null, [Validators.required]],
+      phoneNumber: [null, [Validators.required]]
+    });
   }
 
-  // Custom validator to check if passwords match
-  passwordMatchValidator(form: FormGroup) {
-    return form.get('password')?.value === form.get('confirmPassword')?.value 
-      ? null : { mismatch: true };
-  }
-
-  // Get form controls
-  get f() {
-    return this.resetPasswordForm.controls;
-  }
-
-  onSubmit() {
-    this.submitted = true;
-
-    if (this.resetPasswordForm.invalid) {
-      return;
-    }
-
-    // Simulate password reset success
-    this.successMessage = 'Your password has been reset successfully!';
-    console.log('New Password:', this.resetPasswordForm.value.password);
-  }
+  enrollNow() {
+    alert('Thank you for enrolling! You will receive more details shortly.');
+  } 
 }

@@ -51,6 +51,10 @@ import { AddReviewComponent } from './add-review/add-review.component';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     DataScienceComponent,
     AddReviewComponent,
     OtpVerificationComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    PopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +109,10 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     NzGridModule,
     MatFormFieldModule,
     MatDividerModule,
-    SlickCarouselModule
+    SlickCarouselModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatCheckboxModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, provideAnimationsAsync()],
   bootstrap: [AppComponent]

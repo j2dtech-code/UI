@@ -1,120 +1,149 @@
 <app-home></app-home>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Science Course</title>
-</head>
-<body>
-    <!-- Main Content Section -->
-    <div class="container">
-        <section class="hero">
-            <h1>Transform Your Career with Data Science</h1>
-            <p class="tagline">Join the most comprehensive and hands-on Data Science course. Learn from experts and build a career in one of the most promising fields.</p>
-        </section>
-
-        <div class="main-content">
-            <!-- Overview Section -->
-            <section class="overview" id="overview">
-                <div class="content-header">
-                    <h2>Course Overview</h2>
-                    <div class="underline"></div>
-                </div>
-                <p>Data Science is essential for industries worldwide. Our course covers the fundamental and advanced concepts needed to thrive in this dynamic field. Prepare to master the tools and techniques of data science and unlock opportunities in your career.</p>
-            </section>
-
-            <!-- Why Choose Us Section -->
-            <section class="benefits" id="benefits">
-                <div class="content-header">
-                    <h2>Why Choose This Course?</h2>
-                    <div class="underline"></div>
-                </div>
-                <div class="benefit-list">
-                    <div class="benefit-item">
-                        <div class="icon">📚</div>
-                        <h3>Expert-Led Learning</h3>
-                        <p>Learn from industry professionals with real-world experience in data science.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon">🔧</div>
-                        <h3>Hands-On Projects</h3>
-                        <p>Work on real-world projects to solidify your understanding and showcase your skills.</p>
-                    </div>
-                    <div class="benefit-item">
-                        <div class="icon">🌐</div>
-                        <h3>Global Recognition</h3>
-                        <p>Earn a certificate that is recognized globally, opening doors to job opportunities.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Course Modules Section -->
-            <section class="course-content" id="modules">
-                <div class="content-header">
-                    <h2>Course Modules</h2>
-                    <div class="underline"></div>
-                </div>
-                <div class="module-list">
-                    <div class="module">
-                        <h3>Introduction to Data Science</h3>
-                        <ul>
-                            <li>Basic Concepts & Tools</li>
-                            <li>Exploratory Data Analysis (EDA)</li>
-                            <li>Python for Data Science</li>
-                        </ul>
-                    </div>
-                    <div class="module">
-                        <h3>Data Wrangling</h3>
-                        <ul>
-                            <li>Data Cleaning Techniques</li>
-                            <li>Handling Missing Values</li>
-                            <li>Data Transformation</li>
-                        </ul>
-                    </div>
-                    <div class="module">
-                        <h3>Data Visualization</h3>
-                        <ul>
-                            <li>Creating Visualizations with Matplotlib & Seaborn</li>
-                            <li>Advanced Visualization Techniques</li>
-                            <li>Data Storytelling</li>
-                        </ul>
-                    </div>
-                    <div class="module">
-                        <h3>Machine Learning</h3>
-                        <ul>
-                            <li>Supervised Learning</li>
-                            <li>Unsupervised Learning</li>
-                            <li>Model Evaluation</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Career Opportunities Section -->
-            <section class="career-opportunities" id="careers">
-                <div class="content-header">
-                    <h2>Career Opportunities</h2>
-                    <div class="underline"></div>
-                </div>
-                <ul>
-                    <li>Data Scientist</li>
-                    <li>Data Analyst</li>
-                    <li>Machine Learning Engineer</li>
-                    <li>Business Intelligence Analyst</li>
-                    <li>Data Engineer</li>
-                </ul>
-            </section>
-
-            <!-- Call to Action Section -->
-            <section class="cta" id="enroll">
-                <div class="content-header">
-                    <h2>Ready to Start?</h2>
-                    <div class="underline"></div>
-                </div>
-                <p>Take the first step toward becoming a skilled data scientist. Enroll now and transform your future with data science expertise!</p>
-                <button class="cta-button">Enroll Now</button>
-            </section>
-        </div>
+<div class="course-container">
+  <section class="course-header">
+    <div class="course-title">
+      <h1>Master Data Science</h1>
+      <p>Become an expert in data science with practical skills in machine learning, AI, and big data analytics.</p>
+      <button class="enroll-btn" (click)="enroll()">Enroll Now</button>
     </div>
-</body>
-</html>
+  </section>
+
+  <section class="course-summary">
+    <div class="benefits">
+      <h2>Why Learn Data Science?</h2>
+      <p class="subheading">
+        Data Science is a high-demand field that enables businesses to make data-driven decisions and build intelligent applications:
+      </p>
+      <ul class="benefit-list">
+        <li><span class="bullet"></span> One of the most in-demand skills in the tech industry.</li>
+        <li><span class="bullet"></span> Essential for AI, machine learning, and big data analytics.</li>
+        <li><span class="bullet"></span> High-paying career opportunities across industries.</li>
+        <li><span class="bullet"></span> Used in finance, healthcare, marketing, and more.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="course-summary">
+    <div class="benefits">
+      <h2>Course Overview</h2>
+      <p class="subheading">
+        This course takes you from beginner to expert in Data Science. You will gain practical experience through hands-on projects, making you job-ready:
+      </p>
+      <ul class="benefit-list">
+        <li><span class="bullet"></span> Introduction to Data Science, AI, and Machine Learning.</li>
+        <li><span class="bullet"></span> Data preprocessing, visualization, and feature engineering.</li>
+        <li><span class="bullet"></span> Supervised and unsupervised learning techniques.</li>
+        <li><span class="bullet"></span> Deep learning, neural networks, and NLP.</li>
+        <li><span class="bullet"></span> Hands-on projects using Python, TensorFlow, and Pandas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="course-modules">
+    <h2>What You’ll Learn</h2>
+    <div class="module" *ngFor="let module of modules; let i = index">
+      <h3 (click)="toggleModule(i)" class="module-title">
+        {{ module.name }}
+        <span class="arrow" [class.rotate]="expandedModule === i">&#9660;</span>
+      </h3>
+      <ul *ngIf="expandedModule === i" class="module-content">
+        <li *ngFor="let item of module.content"><span class="bullet">&#8226;</span> {{ item }}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="course-overview">
+    <div class="container">
+      <h2 class="section-title">Key Features of This Course</h2>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Hands-on Practical Learning</h3>
+          <p>Work on real-world datasets and machine learning models.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Expert Mentors</h3>
+          <p>Learn from professionals with years of experience in Data Science and AI.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Comprehensive Content</h3>
+          <p>Covering Python, machine learning, deep learning, and big data analytics.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Industry Use Cases</h3>
+          <p>Gain insights through real-world business applications.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Career Support</h3>
+          <p>Resume building, interview preparation, and job placement assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="course-summary">
+    <div class="benefits">
+      <h2>Career Opportunities</h2>
+      <p class="subheading">
+        Data Science offers exciting career paths in various industries. Below are some high-demand roles:
+      </p>
+      <ul class="benefit-list">
+        <li><span class="bullet"></span> Data Scientist</li>
+        <li><span class="bullet"></span> Machine Learning Engineer</li>
+        <li><span class="bullet"></span> Data Analyst</li>
+        <li><span class="bullet"></span> AI Engineer</li>
+        <li><span class="bullet"></span> Business Intelligence Analyst</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="salary-info">
+    <h2>Average Salary for Data Science Professionals</h2>
+    <div class="salary-range">
+      <div class="salary-card">
+        <h4>Entry-Level</h4>
+        <p>₹6-12 LPA</p>
+      </div>
+      <div class="salary-card">
+        <h4>Mid-Level</h4>
+        <p>₹12-25 LPA</p>
+      </div>
+      <div class="salary-card">
+        <h4>Senior-Level</h4>
+        <p>₹25+ LPA </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="student-reviews">
+    <div class="container">
+      <h2 class="section-title">Student Testimonials</h2>
+      <div class="review-container">
+        <div class="review-card">
+          <p>"This course gave me the skills I needed to transition into data science. Highly recommended!"</p>
+          <footer>- [Student Name], Data Scientist</footer>
+        </div>
+        <div class="review-card">
+          <p>"The hands-on projects were amazing. Helped me get my first job as a Data Analyst!"</p>
+          <footer>- [Student Name], Data Analyst</footer>
+        </div>
+        <div class="review-card">
+          <p>"The best structured course for machine learning and AI. Helped me crack my interviews!"</p>
+          <footer>- [Student Name], ML Engineer</footer>
+        </div>
+        <div class="review-card">
+          <p>"Practical, in-depth, and well-organized. One of the best courses for aspiring data scientists."</p>
+          <footer>- [Student Name], AI Engineer</footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="enroll-section">
+    <button class="enroll-btn">Enroll Now</button>
+  </footer>
+</div>
