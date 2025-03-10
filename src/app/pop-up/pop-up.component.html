@@ -1,0 +1,30 @@
+<div class="popup-container">
+    <h2 class="popup-title">🚀 Welcome Aboard!</h2>
+    <p class="popup-subtitle">Please enter your details to proceed.</p>
+  
+    <form [formGroup]="form">
+      <div class="input-group">
+        <input type="text" formControlName="name" required />
+        <label>Name</label>
+        <div class="error-msg" *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+          Name must be at least 3 characters
+        </div>
+      </div>
+  
+      <div class="input-group">
+        <input type="text" formControlName="phone" required />
+        <label>Phone Number</label>
+        <div class="error-msg" *ngIf="form.controls['phone'].invalid && form.controls['phone'].touched">
+          Enter a valid 10-digit phone number
+        </div>
+      </div>
+    </form>
+  
+    <div class="popup-actions">
+      <button class="cancel-btn" (click)="close()">Cancel</button>
+      <button class="submit-btn" (click)="submit()" [disabled]="form.invalid">
+        Submit
+      </button>
+    </div>
+  </div>
+  

@@ -1,120 +1,225 @@
 <app-home></app-home>
-<div class="course-page">
-    <header class="course-header">
-      <div class="container">
-        <h1>Master Azure Data Factory</h1>
-        <p class="subheading">Become an expert in cloud data engineering with practical skills in Azure Data Factory.</p>
+<div class="course-container">
+  <section class="course-header">
+    <div class="course-title">
+      <h1>Master Azure Data Factory</h1>
+      <p>Become an expert in cloud data engineering with practical skills in Azure Data Factory.</p>
+      <button class="enroll-btn" (click)="enroll()">Enroll Now</button>
+    </div>
+  </section>
+
+  <!-- <section class="course-summary">
+      <div class="benefits">
+        <h2>Why Learn Java?</h2>
+        <ul class="benefit-list">
+          <li><span class="checkmark"></span> High demand in the job market with lucrative salaries</li>
+          <li><span class="checkmark"></span> Cross-platform compatibility (Write Once, Run Anywhere)</li>
+          <li><span class="checkmark"></span> Object-Oriented Programming for scalable solutions</li>
+          <li><span class="checkmark"></span> Extensive use in web, mobile, and enterprise applications</li>
+          <li><span class="checkmark"></span> Strong developer community and vast ecosystem</li>
+        </ul>
       </div>
-    </header>
-  
-    <section class="course-overview">
-      <div class="container">
-        <h2 class="section-title">Course Highlights</h2>
-        <div class="highlights-grid">
-          <div class="highlight-item">
-            <i class="icon">&#x2705;</i>
-            <h3>Hands-on Projects</h3>
-            <p>Real-world scenarios to practice and implement your learning.</p>
-          </div>
-          <div class="highlight-item">
-            <i class="icon">&#x2705;</i>
-            <h3>Expert Mentors</h3>
-            <p>Learn from professionals with years of experience in cloud data engineering.</p>
-          </div>
-          <div class="highlight-item">
-            <i class="icon">&#x2705;</i>
-            <h3>Comprehensive Content</h3>
-            <p>Complete coverage of all aspects of Azure Data Factory, from basic to advanced concepts.</p>
-          </div>
-          <div class="highlight-item">
-            <i class="icon">&#x2705;</i>
-            <h3>Expert Mentors</h3>
-            <p>Learn from professionals with years of experience in cloud data engineering.</p>
-          </div>
-          <div class="highlight-item">
-            <i class="icon">&#x2705;</i>
-            <h3>Comprehensive Content</h3>
-            <p>Complete coverage of all aspects of Azure Data Factory, from basic to advanced concepts.</p>
-          </div>
-          <div class="highlight-item">
-            <i class="icon">&#x2705;</i>
-            <h3>Comprehensive Content</h3>
-            <p>Complete coverage of all aspects of Azure Data Factory, from basic to advanced concepts.</p>
-          </div>
+    </section> -->
+
+  <section class="course-summary">
+    <div class="benefits">
+      <h2>Why Learn ADF?</h2>
+      <p class="subheading">
+        ADF is a powerful cloud-based ETL tool for seamless data integration, automation, and transformation, essential for data engineers:
+      </p>
+      <ul class="benefit-list">
+        <li><span class="bullet"></span> ADF is a leading cloud-based ETL tool for data integration and workflow automation.</li>
+        <li><span class="bullet"></span> Helps businesses manage and transform data efficiently in Azure.</li>
+        <li><span class="bullet"></span> High demand for ADF professionals in cloud data engineering roles.</li>
+        <li><span class="bullet"></span> Essential for handling big data and modern analytics solutions.</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- <section class="course-overview">
+      <h2>Course Overview</h2>
+      <p>This course is designed to take you from beginner to expert in Java programming. You will gain practical knowledge through hands-on projects, ensuring that you are job-ready upon completion.</p>
+    </section> -->
+
+  <section class="course-summary">
+    <div class="benefits">
+      <h2>Course Overview</h2>
+      <p class="subheading">
+        This course is designed to take you from beginner to expert in ADF. You will gain practical
+        knowledge through hands-on projects, ensuring that you are job-ready upon completion:
+      </p>
+      <ul class="benefit-list">
+        <li><span class="bullet"></span> Introduction to Azure Data Factory (ADF) and its architecture.
+        </li>
+        <li><span class="bullet"></span> Creating and managing data pipelines for ETL workflows.
+        </li>
+        <li><span class="bullet"></span> Integration with various Azure services like SQL Database, Data Lake, and Synapse.</li>
+        <li><span class="bullet"></span> Real-time and batch data processing.</li>
+        <li><span class="bullet"></span> Hands-on projects to gain practical experience.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- <section class="course-modules">
+      <h2>What You’ll Learn</h2>
+      <div class="module" *ngFor="let module of modules">
+        <h3>{{ module.name }}</h3>
+        <ul>
+          <li *ngFor="let item of module.content">{{ item }}</li>
+        </ul>
+      </div>
+    </section> -->
+  <section class="course-modules">
+    <h2>What You’ll Learn</h2>
+    <div class="module" *ngFor="let module of modules; let i = index">
+      <h3 (click)="toggleModule(i)" class="module-title">
+        {{ module.name }}
+        <span class="arrow" [class.rotate]="expandedModule === i">&#9660;</span>
+      </h3>
+      <ul *ngIf="expandedModule === i" class="module-content">
+        <li *ngFor="let item of module.content"><span class="bullet">&#8226;</span> {{ item }}</li>
+      </ul>
+    </div>
+  </section>
+  <!-- <section class="course-features">
+    <h2>Key Features of This Course</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h4>Hands-on Practical Learning</h4>
+        <p>Work on real-world projects and lab exercises to master ADF.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Expert-Led Training</h4>
+        <p>Learn from industry professionals with Azure expertise.</p>
+      </div>
+      <div class="feature-card">
+        <h4>Certification Readiness</h4>
+        <p>Get guidance to clear Azure Data Engineer certifications.</p>
+      </div>
+      <div class="feature-card">
+        <h4>End-to-End Data Pipeline Building</h4>
+        <p>Master data integration, transformation, and automation.
+        </p>
+      </div>
+      <div class="feature-card">
+        <h4>Certification</h4>
+        <p>Get certified upon completion, recognized globally.</p>
+      </div>
+    </div>
+  </section> -->
+
+  <section class="course-overview">
+    <div class="container">
+      <h2 class="section-title">Key Features of This Course</h2>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Hands-on Practical Learning</h3>
+          <p>Real-world scenarios to practice and implement your learning.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Expert Mentors</h3>
+          <p>Learn from professionals with years of experience in cloud data engineering.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Comprehensive Content</h3>
+          <p>Complete coverage of all aspects of Azure Data Factory, from basic to advanced concepts.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Expert Mentors</h3>
+          <p>Learn from professionals with years of experience in cloud data engineering.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Comprehensive Content</h3>
+          <p>Complete coverage of all aspects of Azure Data Factory, from basic to advanced concepts.</p>
+        </div>
+        <div class="highlight-item">
+          <i class="icon">&#x2705;</i>
+          <h3>Comprehensive Content</h3>
+          <p>Complete coverage of all aspects of Azure Data Factory, from basic to advanced concepts.</p>
         </div>
       </div>
-    </section>
-  
-    <section class="course-modules">
-      <div class="container">
-        <h2 class="section-title">Course Curriculum</h2>
-        <ul class="module-list">
-          <li><i class="tick">&#x2714;</i> Introduction to Azure Data Factory</li>
-          <li><i class="tick">&#x2714;</i> Building ETL Pipelines</li>
-          <li><i class="tick">&#x2714;</i> Data Transformation with Mapping Flows</li>
-          <li><i class="tick">&#x2714;</i> Integration with Azure Services</li>
-          <li><i class="tick">&#x2714;</i> Automating with Triggers and Schedules</li>
-          <li><i class="tick">&#x2714;</i> Hands-On Use Cases and Projects</li>
-        </ul>
+    </div>
+  </section>
+
+  <!-- <section class="career-opportunities">
+    <h2>Career Opportunities</h2>
+    <ul>
+      <li>Java Developer</li>
+      <li>Software Engineer</li>
+      <li>Back-End Developer</li>
+      <li>Full-Stack Developer</li>
+      <li>Android Developer (Java-based)</li>
+    </ul>
+  </section> -->
+
+  <section class="course-summary">
+    <div class="benefits">
+      <h2>Career Opportunities</h2>
+      <p class="subheading">
+        ADF opens doors to a wide range of career opportunities across various industries.
+         Below are some of the most in-demand roles for ADF professionals:
+      </p>
+      <ul class="benefit-list">
+        <li><span class="bullet"></span> Azure Data Engineer</li>
+        <li><span class="bullet"></span> Data Integration Engineer</li>
+        <li><span class="bullet"></span> ETL Developer</li>
+        <li><span class="bullet"></span> Cloud Data Architect</li>
+        <li><span class="bullet"></span> BI & Analytics Engineer</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="salary-info">
+    <h2>Average Salary for Java Developers</h2>
+    <div class="salary-range">
+      <div class="salary-card">
+        <h4>Entry-Level</h4>
+        <p>₹6-10 LPA</p>
       </div>
-    </section>
-  
-    <section class="course-modules">
-      <div class="container">
-        <h2 class="section-title">Who Should Enroll?</h2>
-        <ul class="module-list">
-          <li><i class="tick">&#x2714;</i> Data Enthusiasts: Individuals starting their journey in data engineering. </li>
-          <li><i class="tick">&#x2714;</i> IT Professionals: Developers, analysts, and system architects expanding their skills.</li>
-          <li><i class="tick">&#x2714;</i> Students: Learners seeking to build cloud-based data solutions.</li>
-        </ul>
+      <div class="salary-card">
+        <h4>Mid-Level</h4>
+        <p>₹10-18 LPA</p>
       </div>
-    </section>
-  
-    <section class="course-modules">
-      <div class="container">
-        <h2 class="section-title">What Will You Learn?</h2>
-        <ul class="module-list">
-          <li><i class="tick">&#x2714;</i> How to create, manage, and monitor ADF pipelines.</li>
-          <li><i class="tick">&#x2714;</i> Implementing ETL processes for big data and analytics.</li>
-          <li><i class="tick">&#x2714;</i> Integrating ADF with other Azure services for seamless workflows.</li>
-          <li><i class="tick">&#x2714;</i> Best practices for optimizing performance and cost.</li>
-        </ul>
+      <div class="salary-card">
+        <h4>Senior-Level</h4>
+        <p>₹18+ LPA </p>
       </div>
-    </section>
-  
-    <section class="enrollment-details">
-      <div class="container">
-        <h2 class="section-title">Enroll Now</h2>
-        <p><strong>Course Fee:</strong> [Price]</p>
-        <p><strong>Next Start Date:</strong> [Start Date]</p>
-        <button class="enroll-btn" (click)="enrollNow()">Join the Course</button>
-      </div>
-    </section>
-  
-    <section class="student-reviews">
-      <div class="container">
-        <h2 class="section-title">Student Testimonials</h2>
-        <div class="review-container">
-          <div class="review-card">
-            <p>"This course gave me the skills I needed to take my cloud engineering career to the next level!"</p>
-            <footer>- [Student Name], Cloud Engineer</footer>
-          </div>
-          <div class="review-card">
-            <p>"This course gave me the skills I needed to take my cloud engineering career to the next level!"</p>
-            <footer>- [Student Name], Cloud Engineer</footer>
-          </div>
-          <div class="review-card">
-            <p>"This course gave me the skills I needed to take my cloud engineering career to the next level!"</p>
-            <footer>- [Student Name], Cloud Engineer</footer>
-          </div>
-          <div class="review-card">
-            <p>"The hands-on labs and projects were excellent for learning by doing. Highly recommend!"</p>
-            <footer>- [Student Name], Data Engineer</footer>
-          </div>
+    </div>
+  </section>
+
+  <section class="student-reviews">
+    <div class="container">
+      <h2 class="section-title">Student Testimonials</h2>
+      <div class="review-container">
+        <div class="review-card">
+          <p>"This course gave me the skills I needed to take my cloud engineering career to the next level!"</p>
+          <footer>- [Student Name], Cloud Engineer</footer>
+        </div>
+        <div class="review-card">
+          <p>"This course gave me the skills I needed to take my cloud engineering career to the next level!"</p>
+          <footer>- [Student Name], Cloud Engineer</footer>
+        </div>
+        <div class="review-card">
+          <p>"This course gave me the skills I needed to take my cloud engineering career to the next level!"</p>
+          <footer>- [Student Name], Cloud Engineer</footer>
+        </div>
+        <div class="review-card">
+          <p>"The hands-on labs and projects were excellent for learning by doing. Highly recommend!"</p>
+          <footer>- [Student Name], Data Engineer</footer>
         </div>
       </div>
-    </section>
-  </div>
-  <div>
-   <!-- <app-test></app-test> -->
-  </div>
+    </div>
+  </section>
+
+  <footer class="enroll-section">
+    <button class="enroll-btn">Enroll Now</button>
+  </footer>
+</div>
