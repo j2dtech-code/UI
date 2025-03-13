@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { PopUpComponent } from '../../pop-up/pop-up.component';
+import { MainServiceService } from '../../services/main-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-adf',
@@ -11,7 +13,7 @@ import { PopUpComponent } from '../../pop-up/pop-up.component';
   styleUrl: './adf.component.css'
 })
 export class ADFComponent {
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog,private service: MainServiceService,private router: Router) {}
     modules = [
       {
         name: 'Module 1: Introduction to Azure Data Factory',
@@ -93,11 +95,20 @@ export class ADFComponent {
   
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
-          console.log('User Data:', result);
+         this.enrollData(result);
         }
       });
     }
 
-  
+     enrollData(data:any) {
+      this.service.enroll(data.name, data.phone).subscribe(
+        (res) => {
+          if(res.code == 200) {
+            this.router.navigate(['/home']);
+          } 
+        }
+      );
+    }
+     }
 
-}
+

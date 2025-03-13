@@ -35,4 +35,16 @@ export class MainServiceService {
 
     return this.http.get(`${this.apiUrl}/updatePassword`, { params });
   }
+
+  enroll(name: string, phoneNumber: number): Observable<any> {
+    const params = new HttpParams()
+      .set('name', name)
+      .set('phoneNumber', phoneNumber);
+
+    return this.http.get(`${this.apiUrl}/enroll`, { params });
+  }
+
+  registerInstructor(formData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/registerInstructor`, formData);
+  }
 }

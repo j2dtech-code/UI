@@ -2,11 +2,12 @@ import { Component, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-interface Person {
-  key: string;
+interface Record {
+  id: number;
   name: string;
-  age: number;
-  address: string;
+  email: string;
+  course: string;
+  status: string;
 }
 
 @Component({
@@ -17,27 +18,41 @@ interface Person {
   styleUrl: './registration-details.component.css'
 })
 export class RegistrationDetailsComponent {
-displayedColumns: string[] = ['id', 'name', 'email', 'status', 'action'];
-  dataSource = new MatTableDataSource([
-    { id: 1, name: 'Alice Johnson', email: 'alice@example.com', status: 'Pending' },
-    { id: 2, name: 'David Smith', email: 'david@example.com', status: 'Pending' },
-    { id: 3, name: 'Ethan Brown', email: 'ethan@example.com', status: 'Pending' },
-    { id: 4, name: 'Sophia Wilson', email: 'sophia@example.com', status: 'Pending' },
-  ]);
+  records: Record[] = [];
+  displayedRecords: Record[] = [];
+  currentPage: number = 1;
+  recordsPerPage: number = 5;
+  Math = Math; // Enable Math functions in template
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  ngOnInit() {
+    this.records = [
+      { id: 1, name: 'John Doe', email: 'john@example.com', course: 'Data Science', status: 'Pending' },
+      { id: 2, name: 'Jane Smith', email: 'jane@example.com', course: 'Java', status: 'Pending' },
+      { id: 3, name: 'Michael Johnson', email: 'michael@example.com', course: 'ADF', status: 'Pending' },
+      { id: 4, name: 'Emily Davis', email: 'emily@example.com', course: 'Data Science', status: 'Pending' },
+      { id: 5, name: 'Chris Brown', email: 'chris@example.com', course: 'Java', status: 'Pending' },
+      { id: 6, name: 'Sophia Wilson', email: 'sophia@example.com', course: 'ADF', status: 'Pending' }
+    ];
+    this.updatePagination();
   }
 
-  approve(row: any) {
-    row.status = 'Approved';
+  updateStatus(id: number, newStatus: string) {
+    const record = this.records.find(item => item.id === id);
+    if (record) {
+      record.status = newStatus;
+    }
+    this.updatePagination();
   }
 
-  reject(row: any) {
-    row.status = 'Rejected';
+  updatePagination() {
+    const startIndex = (this.currentPage - 1) * this.recordsPerPage;
+    this.displayedRecords = this.records.slice(startIndex, startIndex + this.recordsPerPage);
   }
-  
 
+  changePage(page: number) {
+    if (page > 0 && page <= Math.ceil(this.records.length / this.recordsPerPage)) {
+      this.currentPage = page;
+      this.updatePagination();
+    }
+  }
 }
