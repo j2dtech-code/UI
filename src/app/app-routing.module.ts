@@ -15,6 +15,7 @@ import { DataScienceComponent } from './courses/data-science/data-science.compon
 import { JavaComponent } from './courses/java/java.component';
 import { OtpVerificationComponent } from './otp-verification/otp-verification.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { OfferLetterComponent } from './offer-letter/offer-letter.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'test', component: TestComponent },
   { path: 'otp', component: OtpVerificationComponent },
   { path: 'resetPassword', component: ResetPasswordComponent },
+  { path: 'generateOffer', component: OfferLetterComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 

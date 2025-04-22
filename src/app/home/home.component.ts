@@ -57,8 +57,8 @@ export class HomeComponent {
     this.router.navigate(['/modalMessage']);
   }
 
-  hire() {
-    this.router.navigate(['/test']);
+  generateOffer() {
+    this.router.navigate(['/generateOffer']);
     
   }
 

@@ -1,43 +1,19 @@
-<div class="table-container">
-  <h2>Instructor Approvals</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Course</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let record of displayedRecords">
-        <td>{{ record.id }}</td>
-        <td>{{ record.name }}</td>
-        <td>{{ record.email }}</td>
-        <td>{{ record.course }}</td>
-        <td>
-          <span class="status" [ngClass]="{
-              'approved': record.status === 'Approved', 
-              'rejected': record.status === 'Rejected', 
-              'pending': record.status === 'Pending'
-          }">
-            {{ record.status }}
-          </span>
-        </td>
-        <td>
-          <button class="approve-btn" (click)="updateStatus(record.id, 'Approved')">✔ Approve</button>
-          <button class="reject-btn" (click)="updateStatus(record.id, 'Rejected')">✖ Reject</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="offer-container">
+  <h2>Generate Offer</h2>
+  
+  <form (submit)="generateOffer()">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" [(ngModel)]="offer.name" required placeholder="Enter full name" />
 
-  <!-- Pagination Controls -->
-  <div class="pagination">
-    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">❮ Previous</button>
-    <span>Page {{ currentPage }} of {{ Math.ceil(records.length / recordsPerPage) }}</span>
-    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === Math.ceil(records.length / recordsPerPage)">Next ❯</button>
-  </div>
+    <label for="email">Email</label>
+    <input type="email" id="email" [(ngModel)]="offer.email" required placeholder="Enter email" />
+
+    <label for="designation">Designation</label>
+    <input type="text" id="designation" [(ngModel)]="offer.designation" required placeholder="Enter designation" />
+
+    <label for="amount">Offer Amount</label>
+    <input type="number" id="amount" [(ngModel)]="offer.amount" required placeholder="Enter offer amount" />
+
+    <button type="submit">Generate Offer</button>
+  </form>
 </div>

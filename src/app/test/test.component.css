@@ -1,200 +1,49 @@
-/* Vibrant Theme */
-:root {
-  --background-gradient: linear-gradient(120deg, #ff6f61, #ffcc00);
-  --table-bg: #ffffff;
-  --header-bg: linear-gradient(90deg, #2196F3, #673AB7);
-  --header-text: #ffffff;
-  --text-color: #333;
-  --approve-bg: #28a745;  /* Dark Green */
-  --reject-bg: #dc3545;  /* Dark Red */
-  --approve-text: #ffffff;
-  --reject-text: #ffffff;
-  --border-color: #ddd;
-}
-
-/* Full-Page Background */
-body {
-  background: var(--background-gradient);
-  font-family: 'Poppins', sans-serif;
-  color: var(--text-color);
-}
-
-/* Container Styling */
-.table-container {
-  width: 90%;
-  max-width: 1200px;
+.offer-container {
+  width: 400px;
   margin: 50px auto;
   padding: 20px;
-  background: var(--table-bg);
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  border: 2px solid #FFEB3B;
 }
 
-/* Table Styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-radius: 10px;
+h2 {
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* Headers */
-th {
-  background: var(--header-bg);
-  color: var(--header-text);
-  text-transform: uppercase;
-  font-size: 15px;
-  padding: 14px;
-  text-align: left; /* Default left alignment */
+form {
+  display: flex;
+  flex-direction: column;
 }
 
-/* Table Data */
-td {
-  padding: 14px;
-  text-align: left; /* Default left alignment */
-  border-bottom: 2px solid var(--border-color);
+label {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
 }
 
-/* Centering Specific Columns */
-th.status, td.status,
-th.actions, td.actions {
-  text-align: center; /* Status & Actions columns are centered */
+input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-/* Row Styling */
-tr:nth-child(even) {
-  background-color: #f8f9fa;
-}
-
-tr:nth-child(odd) {
-  background-color: #e3f2fd;
-}
-
-tr:hover {
-  background-color: #ffecb3;
+button {
+  padding: 12px;
+  background: #28a745;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
-/* STATUS COLUMN - Centered */
-.status {
-  font-weight: bold;
-  font-size: 14px;
-  text-transform: uppercase;
-  text-align: center;
-  min-width: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Status Colors - Only Text Changes */
-.approved {
-  color: var(--approve-bg);
-}
-
-.rejected {
-  color: var(--reject-bg);
-}
-
-.pending {
-  color: #ff9800;
-}
-
-/* ACTION COLUMN - Proper Center Alignment */
-.action-buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  min-width: 150px;
-}
-
-/* BUTTONS - Solid Color with Clear Text */
-button {
-  padding: 10px 16px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
-  text-transform: uppercase;
-  width: 120px;
-  text-align: center;
-  color: black;  /* Always visible text */
-}
-
-/* Approve Button - Solid Theme */
-.approve-btn {
-  background: var(--approve-bg);
-  border: 2px solid var(--approve-bg);
-  color: var(--approve-text);
-}
-
-/* Reject Button - Solid Theme */
-.reject-btn {
-  background: var(--reject-bg);
-  border: 2px solid var(--reject-bg);
-  color: var(--reject-text);
-}
-
-/* Button Hover Effects */
-.approve-btn:hover {
+button:hover {
   background: #218838;
-  border-color: #218838;
-}
-
-.reject-btn:hover {
-  background: #c82333;
-  border-color: #c82333;
-}
-
-/* Pagination */
-.pagination {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.pagination button {
-  padding: 8px 16px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  border-radius: 5px;
-  background: linear-gradient(90deg, #673AB7, #2196F3);
-  color: var(--header-text);
-}
-
-.pagination button:hover {
-  background: linear-gradient(90deg, #2196F3, #673AB7);
-}
-
-.pagination button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .table-container {
-    width: 95%;
-    padding: 15px;
-  }
-  
-  th, td {
-    padding: 10px;
-    font-size: 12px;
-  }
-
-  button {
-    font-size: 12px;
-    padding: 8px 12px;
-  }
-
-  .action-buttons {
-    gap: 10px;  /* Slightly less space for mobile */
-  }
 }

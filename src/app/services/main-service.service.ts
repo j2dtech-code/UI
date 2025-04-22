@@ -47,4 +47,11 @@ export class MainServiceService {
   registerInstructor(formData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/registerInstructor`, formData);
   }
+
+  generateOffer(formData: any): Observable<Blob> {
+    return this.http.post(`${this.apiUrl}/generate`, formData, {
+      responseType: 'blob' // Expecting a PDF response
+    });
+  }
+  
 }

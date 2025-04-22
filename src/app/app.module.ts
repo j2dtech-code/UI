@@ -55,6 +55,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { OfferLetterComponent } from './offer-letter/offer-letter.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     AddReviewComponent,
     OtpVerificationComponent,
     ResetPasswordComponent,
-    PopUpComponent
+    PopUpComponent,
+    OfferLetterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,20 @@
+<div class="offer-container">
+    <h2>Generate Offer</h2>
+    
+    <form (submit)="generateOffer()">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" [(ngModel)]="offer.name" required placeholder="Enter full name" />
+  
+      <label for="email">Email</label>
+      <input type="email" id="email" [(ngModel)]="offer.email" required placeholder="Enter email" />
+  
+      <label for="designation">Designation</label>
+      <input type="text" id="designation" [(ngModel)]="offer.designation" required placeholder="Enter designation" />
+  
+      <label for="amount">Offer Amount</label>
+      <input type="number" id="amount" [(ngModel)]="offer.amount" required placeholder="Enter offer amount" />
+  
+      <button type="submit" (click)="generateOffer()">Generate Offer</button>
+    </form>
+  </div>
+  
